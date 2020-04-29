@@ -1,15 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 
 import PrivateRoute from './utils/PrivateRoute';
-import Login from './components/LoginForm'
-import Register from './components/RegisterForm'
-import RoomList from './components/RoomList'
-import StartGame from './components/StartGame'
+import Login from './components/auth/LoginForm'
+import Register from './components/auth/RegisterForm'
+import RoomList from './components/Game/RoomList'
+import StartGame from './components/Game/StartGame'
 
 function App() {
   return (
-    <Router>
       <div className="App">
         <Switch>
           <PrivateRoute path="/start" component={StartGame} />
@@ -19,7 +18,6 @@ function App() {
           <Route component={Login} />
         </Switch>
       </div>
-    </Router>
   );
 }
 
