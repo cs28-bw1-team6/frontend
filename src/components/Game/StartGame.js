@@ -8,7 +8,7 @@ const StartGame = () => {
   const [loadingPlayer, setLoadingPlayer] = useState(true);
     useEffect(() => {
       (async () => {
-        const { data } = await axiosWithAuth().get("/adv/init");
+        const { data } = await axiosWithAuth().get("/adv/init/");
         setCurPlayer(data);
         
         setLoadingPlayer(false);
@@ -17,7 +17,7 @@ const StartGame = () => {
     }, []);
   return (
     <>
-      <Room curRoom={curPlayer.title} setCurPlayer={setCurPlayer}/>
+      <Room curRoom={curPlayer} setCurPlayer={setCurPlayer}/>
       <Player loading={loadingPlayer} curPlayer={curPlayer}/>
     </>
   );
