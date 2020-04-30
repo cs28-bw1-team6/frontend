@@ -22,7 +22,7 @@ const LoginForm = (props) => {
         axiosWithAuth().post('/login/', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.key);
-                props.history.push('/start')
+                props.history.push('/map')
             })
             .catch(err => {setIsLoading(false); console.log(err.response)})
     }

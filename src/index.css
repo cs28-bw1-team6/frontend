@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#gameMap{
+  height: 480px;
+  width: 720px;
+  border: 1px solid black;
+}

@@ -20,7 +20,7 @@ const LoginForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         setIsLoading(true);
-        axiosWithAuth().post('/register', credentials)
+        axiosWithAuth().post('/registration/', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.payload);
                 props.history.push('/')
