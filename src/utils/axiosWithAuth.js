@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
         baseURL: 'https://lambda-mud-test.herokuapp.com/api',
         crossDomain: true,
         headers: {
-            'Authorization': token
-        }
+            'Authorization': `token ${token}`
+        },
     })
 }
