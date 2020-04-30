@@ -1,0 +1,56 @@
+.LoginForm {
+  width: 75%;
+  margin: 10% auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  -webkit-box-shadow: 10px 10px 11px 0px #003459;
+          box-shadow: 10px 10px 11px 0px #003459;
+  background-color: white;
+}
+
+@media (min-width: 800px) {
+  .LoginForm {
+    padding: 2rem 0;
+    width: 50%;
+  }
+}
+
+.LoginForm h3 {
+  font-size: 3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0 0 2rem;
+}
+
+.LoginForm input, .LoginForm button {
+  border-color: #00A8E8;
+  font-size: 1.2rem;
+}
+
+.LoginForm input {
+  margin-bottom: 1rem;
+}
+
+.LoginForm button {
+  background-color: #003459;
+  width: 50%;
+  max-width: 148px;
+  padding: .3rem;
+  color: #ffffff;
+}
+
+body {
+  text-align: center;
+  font-size: 62.5%;
+  color: #00171F;
+  background-color: #00A8E8;
+}
+/*# sourceMappingURL=index.css.map */

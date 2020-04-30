@@ -1,0 +1,7 @@
+@import 'components/login','./variables';
+body{
+    text-align: center;
+    font-size: 62.5%;
+    color: $textColor;
+    background-color: $borderColor;
+}

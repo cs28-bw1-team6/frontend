@@ -1,0 +1,34 @@
+@import '../mixins','../variables';
+.LoginForm{
+    width:75%;
+    margin: 10% auto 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding:1rem;
+    box-shadow: 10px 10px 11px 0px $primaryColor;
+    background-color: white;
+    @include desktop{
+        padding: 2rem 0;
+        width:50%;
+    }
+    h3{
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin:0 0 2rem;
+    };
+    input,button{
+        border-color: $borderColor;
+        font-size: 1.2rem;
+    };
+    input{
+        margin-bottom: 1rem;
+    }
+    button{
+        background-color: $primaryColor;
+        width: 50%;
+        max-width: 148px;
+        padding:.3rem;
+        color: #ffffff;
+    }
+}

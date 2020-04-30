@@ -28,7 +28,7 @@ const LoginForm = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='LoginForm'>
             <h3>Login</h3>
             {isLoading && <div>Hang tight...</div>}
             <input type="text" name="username" placeholder="Username" value={credentials.username} onChange={handleChange} />
