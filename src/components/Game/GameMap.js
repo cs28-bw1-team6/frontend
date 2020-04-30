@@ -11,7 +11,7 @@ import Controls from './Controls'
 const GameMap = () => {
     const { user, setUser } = useContext(UserContext);
     const {players, setPlayers} = useContext(PlayerContext);
-    const [rooms, setRooms] = useState(JSON.parse(localStorage.getItem('rooms')))
+    const [rooms, setRooms] = useState([])
     const [canvas, setCanvas] = useState(null)
 
     let canvasRef = useRef(null)
@@ -60,16 +60,16 @@ const GameMap = () => {
     }, [])
 
     useEffect(() => {
-        if(!localStorage.getItem('rooms')) {
-            if (rooms == null) {
+        // if(!localStorage.getItem('rooms')) {
+        //     if (rooms == null) {
                 axiosWithAuth().get('/adv/rooms/')
                 .then(res => {
-                    localStorage.setItem('rooms', res.data.rooms);
-                    setRooms(JSON.parse(res.data.rooms))
+                    localStorage.setItem('rooms', JSON.stringify(res.data.grid));
+                    setRooms(res.data.grid)
                 })
                 .catch(err => console.log(err))
-            }
-        }
+        //     }
+        // }
     }, [])
 
     useEffect(() => {
@@ -85,20 +85,18 @@ const GameMap = () => {
 
     function drawRooms(rooms){
         ctx = canvasRef.current.getContext('2d');
-        // let canvas_width = ctx.canvas.clientWidth;
-        // let canvas_height = ctx.canvas.clientHeight;
 
-        rooms.map((room, index) => {
-            let fields = room.fields;
-            let r = new Room(room.pk,
-                        fields.title,
-                        fields.description,
-                        fields.n_to,
-                        fields.s_to,
-                        fields.e_to,
-                        fields.w_to,
-                        fields.x, 
-                        fields.y
+        rooms.reverse().map((room, index) => {
+            let r = new Room(index,
+                        room.id,
+                        room.title,
+                        room.description,
+                        room.n_to,
+                        room.s_to,
+                        room.e_to,
+                        room.w_to,
+                        room.x, 
+                        room.y
                 )
             return r.draw(ctx, user.title)
         })
@@ -113,7 +111,7 @@ const GameMap = () => {
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center'}}>
-            <canvas id="gameMap" ref={canvasRef} width="720" height="480"></canvas>
+            <canvas id="gameMap" ref={canvasRef} width="500" height="500"></canvas>
             <h3>{user.title}</h3>
             <p>
                 {

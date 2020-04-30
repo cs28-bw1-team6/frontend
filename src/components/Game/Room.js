@@ -1,11 +1,12 @@
 export default class Room{
-    constructor(id, title, description, north=0, south=0, east=0, west=0, x, y){
+    constructor(index, id, title, description, north=0, south=0, east=0, west=0, x, y){
         this.width = 40
         this.height = 40
         
-        this.x = x
-        this.y = y
-
+        
+        this.x = x * this.width * 1.125
+        this.y = y * this.height * 1.125
+        
         this.id = id
         this.title = title
         this.description = description

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axios from 'axios'
 
 const LoginForm = (props) => {
     const [credentials, setCredentials] = useState({
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         setIsLoading(true);
-        axiosWithAuth().post('/login/', credentials)
+        axios.post('https://team6-castle-development.herokuapp.com/api/login/', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.key);
                 props.history.push('/map')
