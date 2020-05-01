@@ -9,6 +9,7 @@ const StartGame = () => {
     useEffect(() => {
       (async () => {
         const { data } = await axiosWithAuth().get("/adv/init/");
+        console.log(data)
         setCurPlayer(data);
         
         setLoadingPlayer(false);

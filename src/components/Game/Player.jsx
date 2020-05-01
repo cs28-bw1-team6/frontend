@@ -7,11 +7,17 @@ function Player({loading,curPlayer}) {
       ) : (
         <>
           <h1>{curPlayer.name}</h1>
-          <h3>Players in Room</h3>
-          <div style={{maxHeight:'5rem',overflow:'auto'}}>
-            {
-                curPlayer.players.map(player=>(<p key={player}>{player}</p>))
-            }
+          <h3>
+            {curPlayer.players.length < 1
+              ? "No Players in Here"
+              : "Players in Room"}
+          </h3>
+          <div style={{ maxHeight: "5rem", overflow: "auto" }}>
+            {curPlayer.players.length < 1 ? (
+              <p>No Players in Here</p>
+            ) : (
+              curPlayer.players.map((player) => <p key={player}>{player}</p>)
+            )}
           </div>
         </>
       )}

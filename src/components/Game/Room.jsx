@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Map from './Map'
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 function Room({ curRoom, setCurPlayer }) {
   const [rooms, setRooms] = useState([]);
   const [dir, setDir] = useState([]);
   const [show, setShow] = useState(false);
+  const [showMap,setShowMap] = useState(false)
   const handleShow = () => setShow(!show);
   useEffect(() => {
     (async () => {
@@ -46,6 +48,7 @@ function Room({ curRoom, setCurPlayer }) {
       setDir([]);
     }
   };
+  const handleMap = () => setShowMap(!showMap)
   return (
     <div>
       {!curRoom ? (
@@ -53,6 +56,7 @@ function Room({ curRoom, setCurPlayer }) {
       ) : (
         <>
           <h3 onMouseMove={handleShow}>{curRoom.title}</h3>
+          <button onClick={handleMap} style={{position:'absolute',right:'2rem',top:'.5rem'}}>Map</button>
           <div
             style={
               show
@@ -69,6 +73,12 @@ function Room({ curRoom, setCurPlayer }) {
           </div>
         </>
       )}
+      <div className='Map' style={!showMap ? {display:'none'}:{position:'absolute',width:'100vw',height:'100vh',backgroundColor:'grey',zIndex:'99',top:'0',left:'0'}}>
+            <Map user={curRoom} rooms={rooms}/>
+            <button onClick={handleMap}>
+                Back
+            </button>
+      </div>
       <div
         style={{
           backgroundColor: "darkgrey",
