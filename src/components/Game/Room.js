@@ -16,11 +16,13 @@ export default class Room{
         this.w_to = west
     }
 
-    draw(ctx, current_room) {
+    draw(ctx, current_room, path) {
         // console.log(current_room)
         let isCurrent = this.title === current_room ? true : false;
         ctx.fillStyle = 'purple'
+        if(path.indexOf(this.id) !== -1) ctx.fillStyle = 'gray'
         if(isCurrent) ctx.fillStyle = 'yellow';
+        
         ctx.fillRect(this.x, this.y, this.width, this.height)
 
         // And room id as text in the box

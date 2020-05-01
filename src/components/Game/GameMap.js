@@ -13,6 +13,7 @@ const GameMap = () => {
     const {players, setPlayers} = useContext(PlayerContext);
     const [rooms, setRooms] = useState([])
     const [canvas, setCanvas] = useState(null)
+    const [path, setPath] = useState([])
 
     let canvasRef = useRef(null)
     let ctx;
@@ -33,6 +34,10 @@ const GameMap = () => {
                     error_msg: ''
                 })
                 setPlayers(res.data.players)
+                let roomId = rooms.find(room => room.title === user.title).id
+                if(path.includes(roomId) !== -1){
+                    setPath(path => [...path, roomId])
+                }
                 drawRooms(rooms)
             }else{
                 setUser({
@@ -42,7 +47,7 @@ const GameMap = () => {
             }
         })
         .catch(err => console.log(err))
-    }   
+    }
 
     useEffect(() => {
         axiosWithAuth().get('/adv/init/')
@@ -98,7 +103,7 @@ const GameMap = () => {
                         room.x, 
                         room.y
                 )
-            return r.draw(ctx, user.title)
+            return r.draw(ctx, user.title, path)
         })
     }
 
@@ -113,12 +118,12 @@ const GameMap = () => {
         <div style={{display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center'}}>
             <canvas id="gameMap" ref={canvasRef} width="500" height="500"></canvas>
             <h3>{user.title}</h3>
-            <p>
+            <div>
                 {
                     user.description.split('\n').map((line, index) => <div key={index}>{line}</div>)
                 }
-            </p>
-            <p>{user.error_msg}</p>
+            </div>
+            <div>{user.error_msg}</div>
         </div>
     )
 }
