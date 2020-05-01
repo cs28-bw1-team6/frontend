@@ -19,8 +19,8 @@ export default class Room{
     draw(ctx, current_room, path) {
         // console.log(current_room)
         let isCurrent = this.title === current_room ? true : false;
-        ctx.fillStyle = 'purple'
-        if(path.indexOf(this.id) !== -1) ctx.fillStyle = 'gray'
+        ctx.fillStyle = 'white'
+        if(path.indexOf(this.id) !== -1) ctx.fillStyle = 'purple'
         if(isCurrent) ctx.fillStyle = 'yellow';
         
         ctx.fillRect(this.x, this.y, this.width, this.height)
